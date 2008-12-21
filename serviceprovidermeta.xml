@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
+<?rfc toc="yes"?>
+<?rfc tocompact="yes"?>
+<?rfc tocdepth="3"?>
+<?rfc tocindent="yes"?>
+<?rfc symrefs="yes"?>
+<?rfc sortrefs="yes"?>
+<?rfc comments="yes"?>
+<?rfc inline="yes"?>
+<?rfc compact="yes"?>
+<?rfc subcompact="no"?>
+<rfc category="exp" docName="feedprovider-00" ipr="none">
+  <front>
+    <title abbrev="FeedProvider">Atom and RSS Service Provider Extensions
+    (Draft)</title>
+
+    <author fullname="Martin Atkins" initials="M." surname="Atkins">
+      <organization>Six Apart Ltd</organization>
+    </author>
+
+    <date />
+
+    <abstract>
+      <t>This document presents an extension that allows a service provider
+      that publishes feeds to include information about itself in those
+      feeds.</t>
+    </abstract>
+
+    <note title="Requirements Language">
+      <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+      "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+      document are to be interpreted as described in <xref
+      target="RFC2119">RFC 2119</xref>.</t>
+    </note>
+  </front>
+
+  <middle>
+    <section title="Introduction">
+      <t>This document presents an extension that allows a service provider
+      that publishes feeds to include information about itself in those
+      feeds.</t>
+    </section>
+
+    <section title="Notational Conventions">
+      <t>The XML Namespaces URI [W3C.REC-xml-names-19990114] for the XML
+      elements and attributes described in this specification is: <spanx
+      style="verb">http://activitystrea.ms/service-provider</spanx>.</t>
+
+      <t>In this document, the namespace prefix "service:" is used for the
+      above Namespace URI. The namespace prefix "atom:" is used for the
+      namespace URI <spanx style="verb">http://www.w3.org/2005/Atom</spanx>.
+      Note that the choices of namespace prefix are arbitrary and not
+      semantically significant. RSS 2.0 elements, which are not in an XML
+      namespace, are referred to simply as "RSS elements".</t>
+
+      <t>This specification uses a shorthand form of terms from the XML
+      Infoset [W3C.REC-xml-infoset-20040204]. The phrase "Information Item" is
+      omitted when naming Element and Attribute Information Items. Therefore,
+      when this specification uses the term "element," it is referring to an
+      Element Information Item in Infoset terms. Likewise, when this
+      specification uses the term "attribute," it is referring to an Attribute
+      Information Item.</t>
+
+      <t>This specification allows the use of IRIs [RFC3987]. Every URI
+      [RFC3986] is also an IRI, so a URI may be used wherever an IRI is named.
+      When an IRI that is not also a URI is given for dereferencing, it MUST
+      be mapped to a URI using the steps in Section 3.1 of [RFC3987]. When an
+      IRI is serving as an identifier, it MUST NOT be so mapped.</t>
+
+      <t>This specification uses "the Atom specification" to refer to <xref
+      target="RFC4287"></xref>.</t>
+    </section>
+
+    <section title="Service Provider Properties">
+      <t>On the web today most users publish content of various types through
+      one or more providers that specialize in publishing content. Examples of
+      specific kinds of providers are photo hosting providers, blog hosting
+      providers and video hosting providers, though there are many more.</t>
+
+      <t>The atom:author element from the Atom specification allows a feed to
+      describe the author of the content. The atom:generator element allows a
+      feed to describe what software was used to generate it. Several child
+      elements of atom:feed allow a feed to describe itself. However, the Atom
+      specification provides no specific support for describing the service
+      provider. While in some cases the "generator" value will describe this
+      due to the software and the service having the same name, the ambiguity
+      of this means that it cannot be reliably employed to obtain service
+      provider information in practice.</t>
+
+      <t>While it is anticipated that other uses of this information will
+      emerge in future, the primary use-case addressed by the extensions
+      described in the following sections is that of systems that publish a
+      user's content aggregated from a number of services. In many cases such
+      systems wish to include an icon representing the service and may also
+      name and link to the service in the description of the content.</t>
+    </section>
+
+    <section title="The service:provider Element">
+      <t>The <spanx style="verb">service:provider</spanx> element is a
+      container for elements describing the service provider. Service
+      providers MAY include a single <spanx style="verb">service:provider</spanx>
+      element as a child of the <spanx style="verb">atom:feed</spanx> element.
+      Content re-publishing services SHOULD include the <spanx style="verb">service:provider</spanx>
+      element from the source feed in the atom:source element of any entries
+      they republish, where such an element was present in the source
+      feed.</t>
+
+      <t>If a content re-publishing service can determine the information
+      required for the <spanx style="verb">service:provider</spanx> element
+      from another source not considered by this specification, it MAY
+      synthesize a suitable <spanx style="verb">service:provider</spanx>
+      element and include it in atom:source.</t>
+
+      <t>The <spanx style="verb">service:provider</spanx> element MAY also be
+      used as a child of an RSS <spanx style="verb">channel</spanx> element,
+      where it has the same content model, meaning and processing expectations
+      as when it appears in an <spanx style="verb">atom:feed</spanx> element.
+      When used in an RSS channel, the child elements of <spanx style="verb">service:provider</spanx>
+      are still Atom elements as described in the following sections, and must
+      be declared to be in the appropriate namespace.</t>
+
+      <t>This element is intended only for use in branded service provider
+      scenarios. It MUST NOT be used to describe the software used to generate
+      the feed unless that software has the same name, URL and icon as the
+      branded service provider. It also MUST NOT be used in feeds that are
+      "self-hosted" by their author. If the content is not hosted by a branded
+      hosted provider the <spanx style="verb">service:provider</spanx> element
+      MUST NOT be present.</t>
+
+      <section title="The atom:title Element">
+        <t>When used as a child of a <spanx style="verb">service:provider</spanx>
+        element, the <spanx style="verb">atom:title</spanx> element contains
+        the name of the service provider. When used in this way, the title
+        element MUST NOT include a type attribute, and must therefore contain
+        only text content as described by section 3.1.1.1 of the Atom
+        specification.</t>
+
+        <t>A <spanx style="verb">service:provider</spanx> Element MUST contain
+        exactly one <spanx style="verb">atom:title</spanx> element.</t>
+
+        <t>The value of this element SHOULD be the brand name of the
+        publishing service as would be familiar to end-users of the
+        service.</t>
+      </section>
+
+      <section title="The atom:icon Element">
+        <t>When used as a child of a <spanx style="verb">service:provider</spanx>
+        element, the <spanx style="verb">atom:icon</spanx> element contains an
+        IRI reference that refers to an image that provides iconic visual
+        identification for the service provider. Its content model is as
+        defined in section 4.2.5 of the Atom specification.</t>
+
+        <t>The icon referenced by this element SHOULD be 16 pixels in both
+        dimensions and SHOULD have the media type image/png, image/gif or
+        image/jpeg. The icon SHOULD be an icon form of the logo of the
+        publishing service as would be familiar to end-users of the service.
+        In most cases, this icon SHOULD be the same icon as used as the
+        shortcut icon or "favicon" for the publishing service.</t>
+
+        <t>A <spanx style="verb">service:provider</spanx> Element MUST contain
+        zero or one <spanx style="verb">atom:icon</spanx> elements. If a
+        processor encounters a feed with more than one provider icon, it MUST
+        process only the first such child element of <spanx style="verb">service:provider</spanx>
+        in document order and ignore all other sibling atom:icon elements.</t>
+
+        <t>Note that as required by the Atom specification this element MUST
+        NOT contain a relative URL.</t>
+      </section>
+
+      <section title="The atom:uri Element">
+        <t>When used as a child of a <spanx style="verb">service:provider</spanx>
+        element, the <spanx style="verb">atom:uri</spanx> element contains an
+        IRI reference that refers to the "home page" of the service provider
+        site.</t>
+
+        <t>The page referenced by this element SHOULD be the entry point of
+        the service as would be familiar to end-users of the service.</t>
+
+        <t>A <spanx style="verb">service:provider</spanx> Element MUST contain
+        zero or one <spanx style="verb">atom:uri</spanx> elements.</t>
+
+        <t>Note that as required by the Atom specification this element MUST
+        NOT contain a relative URL.</t>
+      </section>
+    </section>
+
+    <section title="Security Considerations">
+      <t>As this specification defines an extension to the Atom Syndication
+      Format, it is subject to the same security considerations defined in
+      <xref target="RFC4287"></xref>.</t>
+
+      <t>The information provided in the elements described in this
+      specification is intended only to be advisory, and should not be
+      considered to be or presented to the user as authoritative metadata.</t>
+
+      <t>[TODO: Write some more here.]</t>
+    </section>
+
+    <section title="IANA Considerations">
+      <t>None.</t>
+    </section>
+  </middle>
+
+  <back>
+    <references title="Normative References">
+      <reference anchor="RFC4287">
+        <front>
+          <title>The Atom Syndication Format</title>
+
+          <author>
+            <organization></organization>
+          </author>
+
+          <date />
+        </front>
+      </reference>
+
+      <reference anchor="RFC2119">
+        <front>
+          <title>RFC 2119</title>
+
+          <author>
+            <organization></organization>
+          </author>
+
+          <date />
+        </front>
+      </reference>
+
+      <reference anchor="RFC3987">
+        <front>
+          <title>Internationalized Resource Identifiers (IRIs)</title>
+
+          <author>
+            <organization></organization>
+          </author>
+
+          <date />
+        </front>
+      </reference>
+    </references>
+
+    <section title="Acknowledgements">
+      <t>...</t>
+    </section>
+
+    <section title="Examples">
+      <t>This appendix is non-normative.</t>
+
+      <section anchor="activityentryexample" title="Feed Example">
+        <figure>
+          <preamble>A feed with service provider annotations.</preamble>
+
+          <artwork><![CDATA[<feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:service="http://activitystrea.ms/service-provider">
+   <id>tag:photopanic.example.com,2008:activity01</id>
+   <title>Geraldine's Photos at PhotoPanic</title>
+   <generator>UberPhotoHostingSystem</generator>
+   <updated>2008-11-02T15:29:00Z</updated>
+   <link rel="alternate" type="text/html"
+         href="/geraldine/activities" />
+   <author>
+      <name>Geraldine</name>
+   </author>
+   <service:provider>
+      <title>PhotoPanic</title>
+      <icon>http://photopanic.example.com/favicon.png</icon>
+      <uri>http://photopanic.example.com/</uri>
+   </service:provider>
+</entry>]]></artwork>
+
+          <postamble>This example shows a feed provided by a ficticious
+          hosting provider called PhotoPanic, indicating its name, icon URL
+          and home page URL. This example also includes an <spanx
+          style="verb">atom:generator</spanx> element describing the
+          ficticious software that powers PhotoPanic, and an <spanx
+          style="verb">atom:author</spanx> element describing a ficticious
+          user of PhotoPanic.</postamble>
+        </figure>
+      </section>
+    </section>
+  </back>
+</rfc>
