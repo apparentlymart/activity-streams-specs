@@ -128,16 +128,16 @@
       hosted provider the <spanx style="verb">service:provider</spanx> element
       MUST NOT be present.</t>
 
-      <section title="The atom:title Element">
+      <section title="The atom:name Element">
         <t>When used as a child of a <spanx style="verb">service:provider</spanx>
-        element, the <spanx style="verb">atom:title</spanx> element contains
-        the name of the service provider. When used in this way, the title
+        element, the <spanx style="verb">atom:name</spanx> element contains
+        the name of the service provider. When used in this way, the name
         element MUST NOT include a type attribute, and must therefore contain
         only text content as described by section 3.1.1.1 of the Atom
         specification.</t>
 
         <t>A <spanx style="verb">service:provider</spanx> Element MUST contain
-        exactly one <spanx style="verb">atom:title</spanx> element.</t>
+        exactly one <spanx style="verb">atom:name</spanx> element.</t>
 
         <t>The value of this element SHOULD be the brand name of the
         publishing service as would be familiar to end-users of the
@@ -264,7 +264,7 @@
       <name>Geraldine</name>
    </author>
    <service:provider>
-      <title>PhotoPanic</title>
+      <name>PhotoPanic</name>
       <icon>http://photopanic.example.com/favicon.png</icon>
       <uri>http://photopanic.example.com/</uri>
    </service:provider>
