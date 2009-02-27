@@ -56,9 +56,8 @@
       <t>In this document, the the XML namespace prefix "atom:" is used for
       the namespace URI <spanx style="verb">http://www.w3.org/2005/Atom</spanx>,
       and the XML namespace prefix "thr:" is used for the namespace URI <spanx
-      style="verb">http://purl.org/syndication/thread/1.0</spanx>. Note that
-      this choice of namespace prefix is arbitrary and not semantically
-      significant.</t>
+      style="verb">http://purl.org/syndication/thread/1.0</spanx>. This choice
+ 			of namespace prefix is arbitrary and not semantically significant.</t>
 
       <t>This specification uses a shorthand form of terms from the XML
       Infoset [W3C.REC-xml-infoset-20040204]. The phrase "Information Item" is

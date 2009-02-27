@@ -50,7 +50,7 @@
       <t>In this document, the namespace prefix "service:" is used for the
       above Namespace URI. The namespace prefix "atom:" is used for the
       namespace URI <spanx style="verb">http://www.w3.org/2005/Atom</spanx>.
-      Note that the choices of namespace prefix are arbitrary and not
+      The choices of namespace prefix are arbitrary and not
       semantically significant. RSS 2.0 elements, which are not in an XML
       namespace, are referred to simply as "RSS elements".</t>
 
@@ -164,7 +164,7 @@
         process only the first such child element of <spanx style="verb">service:provider</spanx>
         in document order and ignore all other sibling atom:icon elements.</t>
 
-        <t>Note that as required by the Atom specification this element MUST
+        <t>As required by the Atom specification, this element MUST
         NOT contain a relative URL.</t>
       </section>
 
@@ -180,7 +180,7 @@
         <t>A <spanx style="verb">service:provider</spanx> Element MUST contain
         zero or one <spanx style="verb">atom:uri</spanx> elements.</t>
 
-        <t>Note that as required by the Atom specification this element MUST
+        <t>As required by the Atom specification, this element MUST
         NOT contain a relative URL.</t>
       </section>
     </section>
