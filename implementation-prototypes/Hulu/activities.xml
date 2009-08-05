@@ -1,0 +1,63 @@
+<feed
+   xmlns:activity="http://activitystrea.ms/spec/1.0/"
+   xmlns:thr="http://purl.org/syndication/thread/1.0"
+   xmlns:mrss="http://search.yahoo.com/mrss/"
+   xmlns="http://www.w3.org/2005/Atom"
+   xmlns:hulu="http://hulu.com/feed"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:service="http://activitystrea.ms/service-provider"
+   xmlns:media="[atommedia xml namespace tbd]"
+   >
+
+  <!-- Hulu provides both RSS and Atom activity feeds, but they only
+    link the RSS ones. Since AtomActivity does not define
+    the syntax for activity entries in RSS -- only for object entries --
+    this example uses Hulu's Atom feeds as a basis.
+
+    Interestingly, at the time of writing Hulu's Atom feeds already
+    include the AtomActivity namespace declaration, though they
+    do not currently seem to publish any AtomActivity annotations. -->
+
+  <title>Hulu - Activity Feed for Geraldine Thingy</title>
+  <link href="/profiles/geraldine"/>
+  <link href="http://www.hulu.com/feed/activity/geraldine.atom" rel="self"/>
+  <updated>2009-08-05T20:38:29Z</updated>
+  <id>http://www.hulu.com/feed/activity/geraldine.atom</id>
+  <service:provider>
+    <name>Hulu</name>
+    <icon>http://www.hulu.com/favicon.ico</icon>
+    <uri>http://www.hulu.com/</uri>
+  </service:provider>
+  <activity:subject>
+    <id>tag:hulu.com,2009-08-02,user-3728558</id>
+    <title>Geraldine Thingy</title>
+    <link href="http://www.hulu.com/profiles/geraldine" />
+  </activity:subject>
+
+  <entry>
+    <title>Geraldine Thingy watched Spaced: Ends.</title>
+    <link href="http://www.hulu.com/watch/84707/spaced-ends"/>
+    <id>tag:hulu.com,2009-08-02,activity-3728558-ActivityViewedVideo-84707</id>
+    <published>2009-08-02T05:12:06Z</published>
+    <updated>2009-08-02T05:12:06Z</updated>
+    <summary>[html blob elided]</summary>
+    <content>[html blob elided]</content>
+    <author>
+      <name>Geraldine Thingy</name>
+    </author>
+    <hulu:show-name>Spaced</hulu:show-name>
+    <mrss:title>Spaced</mrss:title>
+    <hulu:video-title>Ends</hulu:video-title>
+    <mrss:thumbnail url="http://thumbnails.hulu.com/18/632/91259_145x80_generated__o7ZP3y5oJkORHwtPd71W4w.jpg"/>
+    <activity:verb>http://activitystrea.ms/schema/1.0/play</activity:verb>
+    <activity:object>
+      <title>Spaced: Ends</title>
+      <link rel="thumbnail" type="image/jpeg" href="http://thumbnails.hulu.com/18/632/91259_145x80_generated__o7ZP3y5oJkORHwtPd71W4w.jpg" />
+      <link rel="alternate" type="application/x-shockwave-flash" href="http://www.hulu.com/embed/A6BdB5y-g_0vuLWHZH8gaQ" media:width="512" media:height="296" />
+      <link rel="alternate" type="text/html" href="http://www.hulu.com/watch/84707/spaced-ends" />
+      <activity:object-type>http://activitystrea.ms/schema/1.0/video</activity:object-type>
+    </activity:object>
+  </entry>
+
+
+</feed>
