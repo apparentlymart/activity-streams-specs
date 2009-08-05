@@ -1,0 +1,25 @@
+<rss version="2.0"
+     xmlns:creativeCommons="http://backend.userland.com/creativeCommonsRssModule"
+     xmlns:activity="http://activitystrea.ms/spec/1.0/"
+     >
+  <channel>
+    <language>en</language>
+    <creativeCommons:license>http://creativecommons.org/licenses/by-nc-sa/2.0/uk/</creativeCommons:license>
+    <pubDate>Fri, 31 Jul 2009 00:54:21 +0000</pubDate>
+    <lastBuildDate>Fri, 31 Jul 2009 00:54:21 +0000</lastBuildDate>
+    <ttl>5</ttl>
+    <docs>http://www.audioscrobbler.net/data/webservices</docs>
+    <title>geraldine's Recently Played Tracks</title>
+    <link>http://www.last.fm/user/geraldine</link>
+    <description>Last 10 tracks submitted to Last.fm</description>
+    <item>
+      <title>Alice in Chains – Rooster</title>
+      <link>http://www.last.fm/music/Alice+in+Chains/_/Rooster</link>
+      <pubDate>Fri, 31 Jul 2009 00:54:21 +0000</pubDate>
+      <guid>http://www.last.fm/user/geraldine#1249001661</guid>
+      <description>http://www.last.fm/music/Alice+in+Chains</description>
+      <activity:verb>http://activitystrea.ms/schema/1.0/play</activity:verb>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/audio</activity:object-type>
+    </item>
+  </channel>
+</rss>
