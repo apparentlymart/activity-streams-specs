@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<feed
+   xmlns="http://www.w3.org/2005/Atom"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:flickr="urn:flickr:"
+   xmlns:media="http://search.yahoo.com/mrss/"
+   xmlns:activity="http://activitystrea.ms/specs/1.0/"
+   xmlns:service="http://activitystrea.ms/service-provider"
+>
+
+  <!-- Flickr currently publishes both RSS and Atom feeds.
+       Since Atom is preferred for AtomActivity, this example
+       is based on the Atom feeds.
+
+       A Flickr photostream feed is a feed of object entries.
+
+       This is not a proper superset of Flickr's feeds because
+       some adjustments to the use of enclosures needed to be
+       made in order to comply with AtomMedia. -->
+
+  <title>Uploads from Geraldine</title>
+  <link rel="self" href="http://api.flickr.com/services/feeds/photos_public.gne?id=40086895@N07&amp;lang=en-us&amp;format=atom" />
+  <link rel="alternate" type="text/html" href="http://www.flickr.com/photos/dot_tiff/"/>
+  <id>tag:flickr.com,2005:/photos/public/40065565</id>
+  <icon>http://farm2.static.flickr.com/1416/buddyicons/40086895@N07.jpg?1219171922#40086895@N07</icon>
+  <subtitle></subtitle>
+  <updated>2009-08-01T00:28:26Z</updated>
+  <generator uri="http://www.flickr.com/">Flickr</generator>
+
+  <!-- Flickr is the service provider -->
+  <service:provider>
+    <name>Flickr</name>
+    <icon>http://www.flickr.com/favicon.ico</icon>
+    <uri>http://www.flickr.com/</uri>
+  </service:provider>
+
+  <!-- geraldine is the subject -->
+  <activity:subject>
+    <id>tag:flickr.com,2005:/user/40065565</id>
+    <title>geraldine</title>
+    <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+  </activity:subject>
+
+  <!-- Posted a photo -->
+  <entry>
+	<title>Yay cats!</title>
+	<link rel="alternate" type="text/html" href="http://www.flickr.com/photos/geraldine/4763945949/"/>
+	<id>tag:flickr.com,2005:/photo/4763945949</id>
+	<published>2009-07-28T04:07:14Z</published>
+	<updated>2009-07-28T04:07:14Z</updated>
+    <dc:date.Taken>2009-07-27T21:07:14-08:00</dc:date.Taken>
+	<content type="html">[html blob elided]</content>
+	<author>
+	  <name>Geraldine</name>
+	  <uri>http://www.flickr.com/people/geraldine/</uri>
+	</author>
+    <link rel="preview" type="image/jpeg" href="http://farm3.static.flickr.com/2452/3763945949_1f9b46dcdd_m.jpg" />
+    <link rel="enclosure" type="image/jpeg" href="http://farm3.static.flickr.com/2452/3763945949_1f9b46dcdd.jpg" />
+
+	<category term="cats" scheme="http://www.flickr.com/photos/tags/" />
+	<category term="cute" scheme="http://www.flickr.com/photos/tags/" />
+
+    <activity:object-type>http://activitystrea.ms/schema/1.0/photo</activity:object-type>
+  </entry>
+
+  <!-- Posted a video -->
+  <entry>
+	<title>Cat Cuties</title>
+	<link rel="alternate" type="text/html" href="http://www.flickr.com/photos/geraldine/4776705314/"/>
+	<id>tag:flickr.com,2005:/photo/4776705314</id>
+	<published>2009-08-01T00:28:26Z</published>
+	<updated>2009-08-01T00:28:26Z</updated>
+    <dc:date.Taken>2009-07-31T17:28:26-08:00</dc:date.Taken>
+	<content type="html">[html blob elided]</content>
+	<author>
+	  <name>Geraldine</name>
+	  <uri>http://www.flickr.com/people/geraldine/</uri>
+	</author>
+    <link rel="preview" type="image/jpeg" href="http://farm4.static.flickr.com/3496/4776705314_f4f951946c_m.jpg" />
+    <link rel="alternate" type="application/x-shockwave-flash" href="http://www.flickr.com/apps/video/stewart.swf?v=71377&amp;photo_id=4776705314" />
+
+	<category term="cats" scheme="http://www.flickr.com/photos/tags/" />
+	<category term="cute" scheme="http://www.flickr.com/photos/tags/" />
+
+    <activity:object-type>http://activitystrea.ms/schema/1.0/video</activity:object-type>
+  </entry>
+
+</feed>
