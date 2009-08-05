@@ -3,6 +3,9 @@
      xmlns:activity="http://activitystrea.ms/spec/1.0/"
      >
   <channel>
+
+    <!-- The Last.fm recent tracks feeds are feeds of object entries in RSS. -->
+
     <language>en</language>
     <creativeCommons:license>http://creativecommons.org/licenses/by-nc-sa/2.0/uk/</creativeCommons:license>
     <pubDate>Fri, 31 Jul 2009 00:54:21 +0000</pubDate>
