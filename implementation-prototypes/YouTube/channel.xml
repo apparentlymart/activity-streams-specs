@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<rss
+   version='2.0'
+   xmlns:atom='http://www.w3.org/2005/Atom'
+   xmlns:openSearch='http://a9.com/-/spec/opensearch/1.1/'
+   xmlns:activity='http://activitystrea.ms/specs/1.0/'
+   xmlns:service='http://activitystrea.ms/service-provider'
+   >
+
+  <!-- YouTube "channel" feeds contain object entries representing the
+       videos posted in a particular channel. Although both RSS and
+       Atom representations are available, the RSS feed is the one
+       that is linked for autodiscovery, so it has been used for
+       this example. -->
+
+  <channel>
+    <description></description>
+    <atom:id>tag:youtube.com,2008:user:geraldine:uploads</atom:id>
+    <lastBuildDate>Wed, 05 Aug 2009 18:06:25 +0000</lastBuildDate>
+    <category domain='http://schemas.google.com/g/2005#kind'>http://gdata.youtube.com/schemas/2007#video</category>
+    <title>Uploads by geraldine</title>
+    <image>
+      <url>http://www.youtube.com/img/pic_youtubelogo_123x63.gif</url>
+      <title>Uploads by geraldine</title>
+      <link>http://www.youtube.com/profile_videos?user=geraldine</link>
+    </image>
+    <link>http://www.youtube.com/profile_videos?user=geraldine</link>
+    <managingEditor>geraldine</managingEditor>
+    <generator>YouTube data API</generator>
+    <openSearch:totalResults>294</openSearch:totalResults>
+    <openSearch:startIndex>1</openSearch:startIndex>
+    <openSearch:itemsPerPage>25</openSearch:itemsPerPage>
+    <service:provider>
+      <name>YouTube</name>
+      <icon>http://www.youtube.com/favicon.ico</icon>
+      <uri>http://www.youtube.com/</uri>
+    </service:provider>
+    <activity:subject>
+      <id>tag:youtube.com,2008:user:geraldine</id>
+      <title>geraldine</title>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/person</activity:object-type>
+    </activity:subject>
+
+    <item>
+      <guid isPermaLink='false'>tag:youtube.com,2008:video:OIzJj8esh6U</guid>
+      <pubDate>Wed, 05 Aug 2009 11:59:27 +0000</pubDate>
+      <atom:updated>2009-08-05T14:34:44.000Z</atom:updated>
+      <category domain='http://schemas.google.com/g/2005#kind'>http://gdata.youtube.com/schemas/2007#video</category>
+      <title>My cat jumps through hoops</title>
+      <description>[ugly blob of HTML]</description>
+      <link>http://www.youtube.com/watch?v=OIzJj8esh6U</link>
+      <author>geraldine</author>
+      <activity:actor>
+        <id>tag:youtube.com,2008:user:geraldine</id>
+      </activity:actor>
+      <activity:object-type>http://activitystrea.ms/schema/1.0/video</activity:object-type>
+    </item>
+
+    <!-- other items omitted for brevity -->
+
+  </channel>
+</rss>
