@@ -145,6 +145,89 @@
       to [insert xref here].</t>
     </section>
 
+    <section anchor="activityconcepts" title="Activity Concepts">
+      <section anchor="activities" title="Activities">
+        <t>For the purpose of this specification, an Activity is a description
+        of an action that was performed (the "verb") at some instant in time
+        by some actor (the "actor"), to some social object (the "object"). An
+        activity stream is a list of such activities.</t>
+
+        <t>An activity may also have a "target", which is used to model some
+        destination of the activity, though its specific meaning varies
+        depending on the verb used.</t>
+
+        <t>It is expected that in many cases consumers of activity streams
+        will use them to turn machine-readable descriptions of activities into
+        human-readable sentences such as "Joanne posted a Photo: 'My Cat'".
+        The process for forming such sentences is not defined by this
+        specification.</t>
+      </section>
+
+      <section anchor="objects" title="Objects">
+        <t>The object of an activity has a type which may be one of the types
+        defined in this specification or an extension type defined by a
+        separate specification.</t>
+
+        <t>An object MUST have an id which is a URI that uniquely identifies
+        the object and can be used to refer to the object.</t>
+
+        <t>An object SHOULD also have a display name which is a name that can
+        be used to refer to the object in a sentence. For example, this may be
+        the name or title of the object. The display name of an object SHOULD
+        be a proper noun or title that would make sense when rendered in
+        sentences of all human languages.</t>
+
+        <t>An object MAY also have a permalink URL, which is a URL at which a
+        representation of the object can be found which is suitable for
+        display as a top-level document in a web browser. In most cases this
+        will be an HTML page.</t>
+
+        <t>An object SHOULD also have an author, which is the object --
+        usually a person as defined in <xref target="person"></xref> -- that
+        created the object.</t>
+
+        <t>The id, display name, permalink and author properties are defined
+        for all object types, but a specific object type definition SHOULD
+        make more specific requirements about the content of these properties
+        when used within objects of that type.</t>
+      </section>
+
+      <section title="Verbs and Object Types">
+        <t>Verbs and object types are identified by IRIs as defined by <xref
+        target="RFC3987"></xref>. These IRIs are not required to be
+        dereferencable, and are used only for identification purposes.</t>
+
+        <t>Other specifications MAY define additional extension verb and
+        object types with corresponding IRIs. Such specifications MUST define
+        the meaning of these verb and object identifiers, and SHOULD also
+        describe how any additional properties of the verb or object type are
+        to be encoded in an Atom entry.</t>
+
+        <t>Verbs and object types MAY derive from other verbs and object
+        types. In this case the activity MUST list of all the parent verbs and
+        the object MUST list of all the parent object types. The properties
+        required by a parent type are also required by any derived types.</t>
+
+        <t>Extension specifications defining new verbs and object types SHOULD
+        define these new types as derivations of types defined in this
+        specification wherever possible, such that consumers supporting only
+        the terms defined in this specification can fall back on a standard
+        type.</t>
+      </section>
+
+      <section title="Activity Streams">
+        <t>An activity stream is a list of activities as defined in <xref
+        target="activities"></xref>.</t>
+
+        <t>An activity stream also has an optional <spanx style="emph">subject</spanx>,
+        which is a single object that is considered to be the primary object
+        -- usually a person as defined in <xref target="person"></xref> --
+        that the activity stream is about. If an activity stream is not about
+        any particular object -- for example, if it's a stream of all activity
+        by all users on a particular site -- the subject MUST be ommitted.</t>
+      </section>
+    </section>
+
     <section title="Base Schema">
       <t>The base schema provides generic terms that all activity consumers
       SHOULD support. The other, more specific sections that follow use
