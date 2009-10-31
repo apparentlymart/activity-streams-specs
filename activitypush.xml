@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
+<?rfc toc="yes"?>
+<?rfc tocompact="yes"?>
+<?rfc tocdepth="3"?>
+<?rfc tocindent="yes"?>
+<?rfc symrefs="yes"?>
+<?rfc sortrefs="yes"?>
+<?rfc comments="yes"?>
+<?rfc inline="yes"?>
+<?rfc compact="yes"?>
+<?rfc subcompact="no"?>
+<rfc category="exp" docName="draft-my-document-00" ipr="full3978">
+  <front>
+    <title abbrev="ActivityPush">Activity Streams Push Publishing
+    Protocol</title>
+
+    <author fullname="Martin Atkins" initials="M." surname="Atkins">
+      <organization></organization>
+    </author>
+
+    <date month="October" year="2009" />
+
+    <abstract>
+      <t>This document defines a protocol for activity publishers to push
+      activity notifications directly to an activity consumer. This is in
+      contrast to the traditional feed-based activity publishing model where a
+      consumer pulls activities from the publisher.</t>
+    </abstract>
+
+    <note title="Requirements Language">
+      <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+      "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+      document are to be interpreted as described in RFC 2119.</t>
+    </note>
+  </front>
+
+  <middle>
+    <section title="Introduction">
+      <t>...</t>
+
+      <t>A design goal of this specification is to be compatible with the
+      OpenSocial activity push mechanism, assuming that OpenSocial has been
+      extended to support Activity Streams properties.</t>
+
+      <t>This document is a work in progress. Everything here is just random
+      brainstorming at this point.</t>
+    </section>
+
+    <section title="Definitions">
+      <t><list style="hanging">
+          <t hangText="Activity Publisher">An application that generates
+          activities and transmits them to an activity consumer.</t>
+
+          <t hangText="Activity Consumer">An application that recieves and
+          processes activities.</t>
+
+          <t hangText="Activity Endpoint">An HTTP resource provided by an
+          activity consumer to which the publisher submits activities.</t>
+        </list></t>
+    </section>
+
+    <section title="Submitting an Activity">
+      <t>Before submitting an activity, the activity publisher must determine
+      the URL of the activity endpoint provided by the activity consumer. The
+      mechanism for doing this is not defined by this specification, but
+      mechanisms may include simply providing the URL of the endpoint in the
+      consumer's human-readable documentation or using the OpenID and OAuth
+      integration described in <xref target="openidintegration"></xref>.</t>
+
+      <t>An activity is submitted from the activity publisher to the activity
+      consumer by submitting an HTTP POST request to the activity endpoint.
+      The entity body of this request is an activity or an activity stream as
+      defined by the activity streams specifications. Consumers MUST accept
+      activities that are expressed in Atom as described in <xref
+      target="atomactivity"></xref>, either in the form of an Atom feed or a
+      single top-level Atom entry. When the request body is an Atom feed or
+      Atom entry, the Content-Type header field in the request MUST carry the
+      value <spanx style="verb">application/atom+xml</spanx>.</t>
+
+      <t>A single activity submit request MAY express multiple activities,
+      either by providing a feed containing a list of activities or by
+      providing a single Atom entry which expresses multiple activities by
+      virtue of including multiple objects.</t>
+
+      <t>The activity consumer MAY accept any other activity serialization
+      when submitted with an appropriate Content-type.</t>
+
+      <t>If the activity consumer accepts the submitted activity, it MUST
+      return an HTTP response with either a 201 Created or 202 Accepted status
+      code. If 201 Created is used, the response MUST include a Location
+      header which gives a URL at which the created activity can be retrieved
+      as required by the HTTP specification. If the request contained multiple
+      activities the consumer MUST return 202 Accepted. The response entity
+      body MUST be a representation with an appropriate Content-Type of the
+      submitted activity or activities as they were understood by the
+      consumer. The consumer SHOULD return this response using the same
+      serialization format that was used in the request.</t>
+
+      <t>If the activity consumer does not accept all of the activities in the
+      request, the consumer MUST return an appropriate HTTP error response and
+      disregard all activities in the request. The consumer MUST either accept
+      or reject the entirety of the request, and not accept some included
+      activities but not others.</t>
+
+      <t>The consumer SHOULD apply similar fallback behavior to submitted
+      activities than what would be applied to activities retrieved from a
+      feed, including the fallback behavior defined for unrecognised object
+      types in the Activity Streams specifications.</t>
+    </section>
+
+    <section anchor="openidintegration"
+             title="Integration with OpenID and OAuth">
+      <t>Although this specification requires no specific mechanism for
+      discovery of the activity submission endpoint URL, this section defines
+      an optional integration with OpenID and OAuth to provide endpoint URL
+      discovery as part of an OpenID transaction. This may be combined with
+      the OpenID/OAuth hybrid extension to also provide authentication
+      credentials to the consumer where necessary.</t>
+
+      <t>TODO: Write this.</t>
+    </section>
+  </middle>
+
+  <back>
+    <references title="Normative References">
+      <reference anchor="atomactivity">
+        <front>
+          <title>Atom Activity Extensions</title>
+
+          <author fullname="Martin Atkins" initials="M." surname="Atkins">
+            <organization>Six Apart</organization>
+          </author>
+
+          <date />
+        </front>
+      </reference>
+    </references>
+  </back>
+</rfc>
