@@ -97,6 +97,10 @@
       consumer. The consumer SHOULD return this response using the same
       serialization format that was used in the request.</t>
 
+      <t>The activity consumer MAY require authentication credentials to be
+      provided for the request to its activity endpoint. If so, the standard
+      HTTP authentication mechanism SHOULD be used.</t>
+
       <t>If the activity consumer does not accept all of the activities in the
       request, the consumer MUST return an appropriate HTTP error response and
       disregard all activities in the request. The consumer MUST either accept
@@ -118,7 +122,67 @@
       the OpenID/OAuth hybrid extension to also provide authentication
       credentials to the consumer where necessary.</t>
 
-      <t>TODO: Write this.</t>
+      <t>In this flow, the activity publisher takes the role of OpenID Relying
+      Party while the activity consumer takes the role of OpenID Provider.</t>
+
+      <t>This integration takes the form of an OpenID Authentication 2.0
+      extension. The extension namespace URI for this extension is <spanx
+      style="verb">http://activitystrea.ms/push</spanx>. The extension alias
+      <spanx style="verb">aspush</spanx> is used for this extension in the
+      sections that follow, but this is merely a notational convention; the
+      extension alias has no semantic significance.</t>
+
+      <section title="Publisher Requests Publishing Access">
+        <t>In order to request activity publishing access, the publisher
+        begins an OpenID Authentication transaction as normal with the
+        activity consumer. The authentication request MUST carry the following
+        additional argument:</t>
+
+        <t><list style="hanging">
+            <t hangText="openid.aspush.formats">A comma-separated list of MIME
+            types which the publisher can use to post activities, in order of
+            preference. This list SHOULD include <spanx style="verb">application/atom+xml</spanx>.</t>
+          </list></t>
+
+        <t>The request MAY also include the initiation parameters for the
+        OpenID OAuth Extension in order to request an OAuth token that will
+        enable publishing access to the activity endpoint.</t>
+
+        <t>The consumer MAY include on the OpenID user approval page a choice
+        for the user about whether to grant publishing access.</t>
+      </section>
+
+      <section title="Consumer Returns Endpoint URL">
+        <t>If the consumer grants publishing access, the response MUST include
+        the following additional arguments:</t>
+
+        <t><list style="hanging">
+            <t hangText="openid.aspush.url">The URL of the consumer's activity
+            endpoint for the authenticated user.</t>
+
+            <t hangText="openid.aspush.format">The MIME type in which the
+            provided activity endpoint accepts activities. This MUST be one of
+            the MIME types given in the publisher's request.</t>
+          </list></t>
+
+        <t>If the consumer does not support any of the formats that the
+        publisher indicates support for, the consumer MUST NOT return the
+        above response arguments.</t>
+
+        <t>If the response also includes an OAuth token using the OpenID OAuth
+        Extension, either this OAuth token MUST grant activity publishing
+        access to the indicated endpoint or the consumer MUST NOT return the
+        above response arguments.</t>
+
+        <t>If the response does not include the above response arguments then
+        either the consumer does not support this extension or it has chosen
+        not to provide access to post activities.</t>
+
+        <t>If the above response arguments are included but no OAuth token is
+        issued this does not necessarily imply that activity posting does not
+        require authentication; the credentials necessary to post activities
+        may be issued by some separate mechanism specific to the consumer.</t>
+      </section>
     </section>
   </middle>
 
