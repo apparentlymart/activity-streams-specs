@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
+<?rfc toc="yes"?>
+<?rfc tocompact="yes"?>
+<?rfc tocdepth="3"?>
+<?rfc tocindent="yes"?>
+<?rfc symrefs="yes"?>
+<?rfc sortrefs="yes"?>
+<?rfc comments="yes"?>
+<?rfc inline="yes"?>
+<?rfc compact="yes"?>
+<?rfc subcompact="no"?>
+<rfc category="exp" docName="draft-my-document-00" ipr="full3978">
+  <front>
+    <title abbrev="ActivitySchema">Atom Activity Base Schema (Draft)</title>
+
+    <author fullname="Author Name" initials="A." surname="Name">
+      <organization></organization>
+    </author>
+
+    <date />
+
+    <abstract>
+      <t></t>
+    </abstract>
+
+    <note title="Requirements Language">
+      <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+      "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+      document are to be interpreted as described in <xref
+      target="RFC2119">RFC 2119</xref>.</t>
+    </note>
+  </front>
+
+  <middle>
+    <section title="Introduction">
+      <t></t>
+    </section>
+
+    <section title="Activity Concepts">
+      <t></t>
+
+      <section title="Activities">
+        <t>An activity is...</t>
+
+        <t>An activity has the following properties:<list style="hanging">
+            <t hangText="actor">The object that performed the action that this
+            activity describes.</t>
+
+            <t hangText="object">The object that is the direct object of the
+            action that this activity describes.</t>
+
+            <t hangText="target">The object that is the target of the action
+            that this activity describes. FIXME: What's a target?</t>
+
+            <t hangText="time">The time that the activity occured.</t>
+
+            <t hangText="sentence">A human readable, natural-language
+            description of the action that this activity describes.</t>
+
+            <t hangText="verbs">A set of IRIs identifying the verbs of the
+            actoin that this activity describes.</t>
+          </list></t>
+      </section>
+
+      <section title="Objects">
+        <t>An object is...</t>
+
+        <t>An object has the following properties:<list style="hanging">
+            <t hangText="display name">A human-readable name for the
+            object</t>
+
+            <t hangText="permalink URL">The URL of a human-friendly
+            representation of this object. In most cases this will be an HTML
+            page.</t>
+
+            <t hangText="id">An IRI that serves as a globally-unique
+            identifier for this object.</t>
+
+            <t hangText="object types">A set of IRIs identifying specific
+            types that this object has.</t>
+          </list></t>
+      </section>
+
+      <section title="Activity Streams">
+        <t>An activity stream is...</t>
+
+        <t>An activity stream has the following properties:<list
+            style="hanging">
+            <t hangText="display name">A human-readable name for the
+            stream</t>
+
+            <t hangText="activities">A list of all or some of the activities
+            in this stream.</t>
+
+            <t hangText="id">An IRI that serves as a globally-unique
+            identifier for this activity stream.</t>
+
+            <t hangText="subject">The object that this activity stream is
+            considered to be about.</t>
+          </list></t>
+      </section>
+    </section>
+
+    <section title="Activity Streams in Atom">
+      <t>An activity stream is represented in Atom as an <spanx style="verb">atom:feed</spanx>
+      element as described in section 4.1.1 of the Atom specification.</t>
+
+      <t>The display name of the activity stream is encoded as the content of
+      the <spanx style="verb">atom:title</spanx> child of the <spanx
+      style="verb">atom:feed</spanx> element as defined in section 4.2.14.</t>
+
+      <t>The list of activities in the stream is encoded as a list of <spanx
+      style="verb">atom:entry</spanx> elements, as described in section 4.1.1
+      of the Atom specification. These <spanx style="verb">atom:entry</spanx>
+      elements may either represent a sequence of activities as described in
+      <xref target="activitiesinatom"></xref> or objects as described in <xref
+      target="objectentries"></xref>. In the latter case, the activity is
+      implied as described in <xref target="impliedactivity"></xref>.</t>
+
+      <section anchor="impliedactivity"
+               title="Implied Post Activity of an Object">
+        <t></t>
+      </section>
+    </section>
+
+    <section anchor="objectsinatom" title="Objects in Atom">
+      <t></t>
+
+      <section title="The activity:object and activity:target elements">
+        <t></t>
+      </section>
+
+      <section title="Objects as atom:author elements">
+        <t></t>
+      </section>
+
+      <section anchor="objectentries" title="Objects as atom:entry elements">
+        <t></t>
+      </section>
+    </section>
+
+    <section anchor="activitiesinatom" title="Activities in Atom">
+      <t></t>
+    </section>
+
+    <section title="Objects in RSS">
+      <t></t>
+    </section>
+
+    <section title="Activity Streams in RSS">
+      <t></t>
+    </section>
+
+    <section anchor="IANA" title="IANA Considerations">
+      <t>This document makes no request of IANA.</t>
+
+      <t>Note to RFC Editor: this section may be removed on publication as an
+      RFC.</t>
+    </section>
+
+    <section anchor="Security" title="Security Considerations">
+      <t></t>
+    </section>
+
+    <section anchor="Acknowledgements" title="Acknowledgements">
+      <t></t>
+    </section>
+  </middle>
+
+  <back>
+    <references title="Normative References">
+      <reference anchor="RFC4287">
+        <front>
+          <title>The Atom Syndication Format</title>
+
+          <author>
+            <organization></organization>
+          </author>
+
+          <date />
+        </front>
+      </reference>
+
+      <reference anchor="RFC2119">
+        <front>
+          <title>RFC 2119</title>
+
+          <author>
+            <organization></organization>
+          </author>
+
+          <date />
+        </front>
+      </reference>
+
+      <reference anchor="RFC3987">
+        <front>
+          <title>Internationalized Resource Identifiers (IRIs)</title>
+
+          <author>
+            <organization></organization>
+          </author>
+
+          <date />
+        </front>
+      </reference>
+
+      <reference anchor="RFC4685">
+        <front>
+          <title>Atom Threading Extensions</title>
+
+          <author fullname="James M. Snell" initials="J. M." surname="Snell">
+            <organization></organization>
+          </author>
+
+          <date month="September" year="2006" />
+        </front>
+      </reference>
+
+      <reference anchor="atomcommentmeta-00">
+        <front>
+          <title>Atom Comment Metadata Extensions</title>
+
+          <author fullname="Martin Atkins" initials="M." surname="Atkins">
+            <organization></organization>
+          </author>
+
+          <date />
+        </front>
+      </reference>
+    </references>
+  </back>
+</rfc>
